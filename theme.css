@@ -131,3 +131,79 @@ body {
   border-radius: var(--radius-m);
   border: 1px solid rgba(var(--callout-color), 0.25);
 }
+
+/* Task checkboxes: in progress [/] and cancelled [-] */
+.task-list-item-checkbox {
+  border-radius: var(--radius-s) !important;
+  width: 1em;
+  height: 1em;
+}
+
+.task-list-item[data-task="/"] .task-list-item-checkbox,
+.HyperMD-task-line[data-task="/"] .task-list-item-checkbox {
+  background-color: var(--color-yellow) !important;
+  border-color: var(--color-yellow) !important;
+  position: relative !important;
+}
+
+.task-list-item[data-task="/"] .task-list-item-checkbox::before,
+.HyperMD-task-line[data-task="/"] .task-list-item-checkbox::before {
+  content: none !important;
+}
+
+.task-list-item[data-task="/"] .task-list-item-checkbox::after,
+.HyperMD-task-line[data-task="/"] .task-list-item-checkbox::after {
+  content: "" !important;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background-color: var(--color-yellow);
+  transform: translateY(-50%);
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  opacity: 1 !important;
+}
+
+.task-list-item[data-task="-"],
+.HyperMD-task-line[data-task="-"] {
+  text-decoration: line-through !important;
+  opacity: 0.6;
+}
+
+.task-list-item[data-task="-"] .task-list-item-checkbox,
+.HyperMD-task-line[data-task="-"] .task-list-item-checkbox {
+  background-color: var(--background-modifier-border) !important;
+  border-color: var(--text-faint) !important;
+  color: transparent !important;
+  position: relative !important;
+}
+
+.task-list-item[data-task="-"] .task-list-item-checkbox::before,
+.HyperMD-task-line[data-task="-"] .task-list-item-checkbox::before {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  content: "" !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-faint);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.task-list-item[data-task="-"] .task-list-item-checkbox::after,
+.HyperMD-task-line[data-task="-"] .task-list-item-checkbox::after {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  content: "" !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-faint);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
